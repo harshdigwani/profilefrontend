@@ -27,12 +27,11 @@ export const signin = async function (user) {
         body: JSON.stringify(user)
     });
     const status = response.status;
-    console.log(response);
     response = await response.json();
-    console.log(response)
+
     if (status === 200) {
         console.log("status 200");
-        authenticate(response);
+        authenticate(response.data);
     }
     return response;
 }
