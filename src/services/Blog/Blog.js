@@ -1,24 +1,24 @@
 import { API } from '../../Backend';
+import { getToken } from '../Auth/Auth';
 
 // getting all Blogs
-export const getAllBlogs = function () {
-    fetch(`${API}/blogs/all`, {
+export const getAllBlogs = async function () {
+    let response = await fetch(`${API}/blogs/all`, {
 
         method: "GET",
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
         }
-    })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    });
+
+    response = await response.json();
+    return response;
 }
 
 // Get Blog by id
-export const getBlogById = function (blogId) {
-    fetch(`${API}/blogs/${blogId}`, {
+export const getBlogById = async function (blogId) {
+    let response = await fetch(`${API}/blogs/${blogId}`, {
 
         method: "GET",
         headers: {
@@ -26,16 +26,15 @@ export const getBlogById = function (blogId) {
             "Content-Type": "application/json"
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+
+    response = await response.json();
+    return response;
 }
 
 
 // Get blogs of a user
-export const getBlogsOfUser = function (userId) {
-    fetch(`${API}/blogs/user/${userId}`, {
+export const getBlogsOfUser = async function (userId) {
+    let response = await fetch(`${API}/blogs/user/${userId}`, {
 
         method: "GET",
         headers: {
@@ -43,63 +42,62 @@ export const getBlogsOfUser = function (userId) {
             "Content-Type": "application/json"
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+
+    response = await response.json();
+    return response;
 }
 
 
 
 // Add blog or post blog
-export const addBlog = function (blog) {
-    fetch(`${API}/blogs`, {
+export const createBlog = async function (blog) {
+    let response = await fetch(`${API}/blogs`, {
 
         method: "POST",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         },
         body: JSON.stringify(blog)
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+
+    response = await response.json();
+    return response;
 }
 
 
 // Update Blog
-export const updateBlog = function (blogId, blog) {
-    fetch(`${API}/blogs/${blogId}`, {
+export const updateBlog = async function (blogId, blog) {
+    let response = await fetch(`${API}/blogs/${blogId}`, {
 
         method: "PUT",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         },
         body: JSON.stringify(blog)
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+
+    response = await response.json();
+    return response;
 }
 
 
 
 // delete Blog
-export const deleteBlog = function (blogId) {
-    fetch(`${API}/blogs/${blogId}`, {
+export const deleteBlog = async function (blogId) {
+    let response = await fetch(`${API}/blogs/${blogId}`, {
 
         method: "DELETE",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+
+    response = await response.json();
+    return response;
 }

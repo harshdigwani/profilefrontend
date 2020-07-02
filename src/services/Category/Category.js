@@ -44,7 +44,6 @@ export const addCategory = async function (categoryName) {
         body: JSON.stringify({ "name": categoryName })
     });
     response = await response.json();
-    console.log(getToken());
     return response;
 }
 

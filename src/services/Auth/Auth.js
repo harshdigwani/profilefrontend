@@ -31,7 +31,7 @@ export const signin = async function (user) {
 
     if (status === 200) {
         console.log("status 200");
-        authenticate(response.data);
+        authenticate({ ...response.data, 'token': response.token });
     }
     return response;
 }

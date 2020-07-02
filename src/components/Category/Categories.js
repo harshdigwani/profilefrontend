@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllCategories, addCategory } from '../../services/Category/Category';
+import { getAllCategories, addCategory, deleteCategory, updateCategory } from '../../services/Category/Category';
 
 class Categories extends Component {
 
@@ -8,6 +8,7 @@ class Categories extends Component {
         this.state = {
             categories: [],
             category: "",
+            categoryId: "",
             error: {},
             loading: true
         }
@@ -19,8 +20,10 @@ class Categories extends Component {
 
     getAllCategories = async () => {
         try {
-            const categories = await getAllCategories();
-            this.setState({ categories, loading: false });
+            const response = await getAllCategories();
+            if (response.ok)
+                this.setState({ categories: response.data, loading: false });
+            console.log(response.message);
         } catch (err) {
             console.error(err);
         }
@@ -36,20 +39,64 @@ class Categories extends Component {
         }
     }
 
+    updateCategory = async (categoryId, category) => {
+        try {
+            const result = await updateCategory(categoryId, category);
+            console.log(result);
+
+        } catch (err) {
+            console.error(err);
+        }
+        this.setState({ categoryId: "", category: "" });
+    }
+
+
+    deleteCategory = async (categoryId) => {
+        try {
+            alert("delete category");
+            const result = await deleteCategory(categoryId);
+            console.log(result);
+
+        } catch (err) {
+            console.error(err)
+        }
+    }
+
     handleChange = (e) => {
         this.setState({
-            category: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
     render() {
         return (
             <div>
-                <input onChange={this.handleChange} value={this.state.category} />
+                <input
+                    type="text"
+                    name="category"
+                    onChange={this.handleChange}
+                    value={this.state.category} />
+
                 <button onClick={this.addCategory} >Add Category</button>
+
                 {Object(this.state.categories).map(category => (
-                    <h1 key={category._id}>{category.name}</h1>
-                ))}
+                    <div key={category._id}>
+
+                        {(this.state.categoryId === category._id) ?
+                            (<div>
+                                <input
+                                    type="text"
+                                    name="category"
+                                    onChange={this.handleChange}
+                                    value={this.state.category} />
+                                <button onClick={() => this.updateCategory(category._id, this.state.category)}>Update</button>
+                            </div>) :
+                            <h1 >{category.name}</h1>}
+                        <button onClick={() => this.deleteCategory(category._id)}>Delete</button>
+                        <button onClick={() => this.setState({ categoryId: category._id, category: category.name })}>Edit</button>
+                    </div>
+                ))
+                }
             </div>
         )
     }
