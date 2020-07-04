@@ -59,7 +59,7 @@ class Profile extends Component {
         return (
             <div>
                 {JSON.stringify(this.state.profile)}
-                <button onClick={this.editProject}>Edit</button>
+                <button onClick={this.editProfile}>Edit</button>
             </div>
         )
     }

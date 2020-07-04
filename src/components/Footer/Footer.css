@@ -1,0 +1,30 @@
+.footer {
+    position: absolute;
+    bottom: -5rem;
+    left: 0;
+    right: 0;
+    height: 3.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+.footer span {
+    text-decoration: none;
+    color: aliceblue;
+    cursor: pointer;
+}
+
+.footer span:hover {
+    color: rgb(68, 68, 255);
+}
+
+@media only screen and (max-width:1200px) {
+    footer {
+        height: 5rem;
+    }
+}

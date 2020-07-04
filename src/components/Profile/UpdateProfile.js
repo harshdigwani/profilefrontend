@@ -24,6 +24,8 @@ class UpdateProfile extends Component {
             })
     }
 
+    getState = () => console.log(this.state);
+
     updateProfile = async () => {
         try {
             this.setState({ loading: true });
@@ -41,31 +43,34 @@ class UpdateProfile extends Component {
 
 
     handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        console.log(e.target)
+        if (this.state.update)
+            this.setState({
+                [e.target.name]: e.target.value
+            })
     }
 
     render() {
+        if (!this.state.update)
+            return (<div>No Profile found</div>)
         return (
+
             <div>
                 <h4>{this.state.user.firstname + " " + this.state.user.lastname}</h4>
                 <h4>{this.state.category}</h4>
-                <h4>Title</h4>
+                <h4>Name</h4>
                 <input
                     type="text"
-                    name="title"
-                    value={this.state.title}
+                    name="profile.about.name"
+                    value={this.state.profile.about.name}
                     onChange={this.handleChange}
                 />
-                <h4>Content</h4>
-                <textarea
-                    name="description"
-                    value={this.state.description}
-                    onChange={this.handleChange}
-                />
-                {this.state.update ? <button onClick={this.updateProject}>Update Project</button>
-                    : <button onClick={this.createProject}>Create Project</button>}
+
+                <h5>{JSON.stringify(this.state.profile.about)}</h5>
+
+                <button onClick={this.updateProfile}>Update Profile</button>
+                <button onClick={this.getState}>Get state </button>
+
             </div>
         )
     }
