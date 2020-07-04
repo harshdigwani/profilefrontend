@@ -9,7 +9,7 @@ class Blog extends Component {
         this.state = {
             user: isAutheticated(),
             blogId: this.props.match.params.id,
-            blog: {}
+            blog: null
         }
     }
 

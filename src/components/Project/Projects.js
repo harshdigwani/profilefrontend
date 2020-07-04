@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import { getAllBlogs, getBlogsOfUser } from '../../services/Blog/Blog'
+import { getAllProjects, getProjectsOfUser } from '../../services/Project/Project'
 
-class Blogs extends Component {
+class Projects extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            Blogs: [],
+            projects: [],
             error: {},
             loading: true
         }
     }
 
     async componentDidMount() {
-        await this.getAllBlogs();
+        await this.getAllProjects();
     }
 
-    getAllBlogs = async () => {
+    getAllProjects = async () => {
         try {
-            const response = await getAllBlogs();
+            const response = await getAllProjects();
             if (response.ok)
-                this.setState({ Blogs: response.data, loading: false });
+                this.setState({ projects: response.data, loading: false });
             console.log(response)
             console.log(response.message);
 
@@ -29,18 +29,17 @@ class Blogs extends Component {
         }
     }
 
-    getBlogsOfUser = async () => {
+    getProjectsOfUser = async () => {
         try {
-            const response = await getBlogsOfUser();
+            const response = await getProjectsOfUser();
             if (response.ok)
-                this.setState({ Blogs: response.data, loading: false });
+                this.setState({ projects: response.data, loading: false });
             console.log(response);
             console.log(response.message);
 
         } catch (err) {
             console.error(err);
         }
-
     }
 
     render() {
@@ -48,14 +47,14 @@ class Blogs extends Component {
             <div>
                 {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
 
-                {Object(this.state.Blogs).map(blog =>
-                    (<div key={blog._id}>
-                        <h1>{blog.title}</h1>
-                        <p>{blog.category.name}</p>
-                        <p>{blog.author.name}</p>
-                        <p>{blog.content}</p>
-                        <p>{(new Date(blog.createdAt)).toLocaleDateString()}</p>
-                        <div>{Array(blog.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div>
+                {Object(this.state.projects).map(project =>
+                    (<div key={project._id}>
+                        <h1>{project.title}</h1>
+                        <p>{project.category.name}</p>
+                        <p>{project.createdBy.name}</p>
+                        <p>{project.description}</p>
+                        <p>{(new Date(project.createdAt)).toLocaleDateString()}</p>
+                        <div>{Array(project.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div>
                         {/* {JSON.stringify(blog)} */}
                     </div>))}
             </div>)
@@ -63,4 +62,4 @@ class Blogs extends Component {
     }
 }
 
-export default Blogs;
+export default Projects;

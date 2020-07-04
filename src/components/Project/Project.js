@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import { isAutheticated } from '../../services/Auth/Auth';
-import { getBlogById } from '../../services/Blog/Blog';
+import { getProjectById } from '../../services/Project/Project';
 
-class Blog extends Component {
+class Project extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             user: isAutheticated(),
-            blogId: this.props.match.params.id,
-            blog: {}
+            projectId: this.props.match.params.id,
+            project: null
         }
     }
 
@@ -17,9 +17,9 @@ class Blog extends Component {
         try {
             this.setState({ loading: true });
 
-            const response = await getBlogById(this.state.blogId);
+            const response = await getProjectById(this.state.projectId);
             if (response.ok)
-                this.setState({ blog: response.data, loading: false });
+                this.setState({ project: response.data, loading: false });
             console.log(response);
             console.log(response.message);
 
@@ -28,21 +28,21 @@ class Blog extends Component {
         }
     }
 
-    editBlog = () => {
+    editProject = () => {
         this.props.history.push({
-            pathname: '/createblog',
-            state: { ...this.state.blog, update: true }
+            pathname: '/createproject',
+            state: { ...this.state.project, update: true }
         })
     }
 
     render() {
         return (
             <div>
-                {JSON.stringify(this.state.blog)}
-                <button onClick={this.editBlog}>Edit</button>
+                {JSON.stringify(this.state.project)}
+                <button onClick={this.editProject}>Edit</button>
             </div>
         )
     }
 }
 
-export default Blog;
+export default Project;

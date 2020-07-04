@@ -6,7 +6,7 @@ class Blogs extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            Blogs: [],
+            blogs: [],
             error: {},
             loading: true
         }
@@ -20,7 +20,7 @@ class Blogs extends Component {
         try {
             const response = await getAllBlogs();
             if (response.ok)
-                this.setState({ Blogs: response.data, loading: false });
+                this.setState({ blogs: response.data, loading: false });
             console.log(response)
             console.log(response.message);
 
@@ -33,7 +33,7 @@ class Blogs extends Component {
         try {
             const response = await getBlogsOfUser();
             if (response.ok)
-                this.setState({ Blogs: response.data, loading: false });
+                this.setState({ blogs: response.data, loading: false });
             console.log(response);
             console.log(response.message);
 
@@ -48,7 +48,7 @@ class Blogs extends Component {
             <div>
                 {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
 
-                {Object(this.state.Blogs).map(blog =>
+                {Object(this.state.blogs).map(blog =>
                     (<div key={blog._id}>
                         <h1>{blog.title}</h1>
                         <p>{blog.category.name}</p>
