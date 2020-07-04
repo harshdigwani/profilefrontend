@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAllBlogs, getBlogsOfUser } from '../../services/Blog/Blog'
+import Base from '../Base/Base';
 
 class Blogs extends Component {
 
@@ -45,21 +46,22 @@ class Blogs extends Component {
 
     render() {
         return (
-            <div>
-                {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
+            <Base>
+                <div>
+                    {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
 
-                {Object(this.state.blogs).map(blog =>
-                    (<div key={blog._id}>
-                        <h1>{blog.title}</h1>
-                        <p>{blog.category.name}</p>
-                        <p>{blog.author.name}</p>
-                        <p>{blog.content}</p>
-                        <p>{(new Date(blog.createdAt)).toLocaleDateString()}</p>
-                        <div>{Array(blog.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div>
-                        {/* {JSON.stringify(blog)} */}
-                    </div>))}
-            </div>)
-
+                    {Object(this.state.blogs).map(blog =>
+                        (<div key={blog._id}>
+                            <h1>{blog.title}</h1>
+                            <p>{blog.category.name}</p>
+                            <p>{blog.author.name}</p>
+                            <p>{blog.content}</p>
+                            <p>{(new Date(blog.createdAt)).toLocaleDateString()}</p>
+                            <div>{Array(blog.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div>
+                            {/* {JSON.stringify(blog)} */}
+                        </div>))}
+                </div>
+            </Base>)
     }
 }
 

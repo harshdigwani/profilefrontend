@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { isAutheticated } from '../../services/Auth/Auth';
 import { getProjectById } from '../../services/Project/Project';
+import Base from '../Base/Base';
+
 
 class Project extends Component {
 
@@ -37,10 +39,12 @@ class Project extends Component {
 
     render() {
         return (
-            <div>
-                {JSON.stringify(this.state.project)}
-                <button onClick={this.editProject}>Edit</button>
-            </div>
+            <Base>
+                <div>
+                    {JSON.stringify(this.state.project)}
+                    <button onClick={this.editProject}>Edit</button>
+                </div>
+            </Base>
         )
     }
 }

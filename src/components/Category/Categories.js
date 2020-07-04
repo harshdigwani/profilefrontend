@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { getAllCategories, addCategory, deleteCategory, updateCategory } from '../../services/Category/Category';
-
+import Base from '../Base/Base';
 class Categories extends Component {
 
     constructor(props) {
@@ -70,34 +70,36 @@ class Categories extends Component {
 
     render() {
         return (
-            <div>
-                <input
-                    type="text"
-                    name="category"
-                    onChange={this.handleChange}
-                    value={this.state.category} />
+            <Base>
+                <div>
+                    <input
+                        type="text"
+                        name="category"
+                        onChange={this.handleChange}
+                        value={this.state.category} />
 
-                <button onClick={this.addCategory} >Add Category</button>
+                    <button onClick={this.addCategory} >Add Category</button>
 
-                {Object(this.state.categories).map(category => (
-                    <div key={category._id}>
+                    {Object(this.state.categories).map(category => (
+                        <div key={category._id}>
 
-                        {(this.state.categoryId === category._id) ?
-                            (<div>
-                                <input
-                                    type="text"
-                                    name="category"
-                                    onChange={this.handleChange}
-                                    value={this.state.category} />
-                                <button onClick={() => this.updateCategory(category._id, this.state.category)}>Update</button>
-                            </div>) :
-                            <h1 >{category.name}</h1>}
-                        <button onClick={() => this.deleteCategory(category._id)}>Delete</button>
-                        <button onClick={() => this.setState({ categoryId: category._id, category: category.name })}>Edit</button>
-                    </div>
-                ))
-                }
-            </div>
+                            {(this.state.categoryId === category._id) ?
+                                (<div>
+                                    <input
+                                        type="text"
+                                        name="category"
+                                        onChange={this.handleChange}
+                                        value={this.state.category} />
+                                    <button onClick={() => this.updateCategory(category._id, this.state.category)}>Update</button>
+                                </div>) :
+                                <h1 >{category.name}</h1>}
+                            <button onClick={() => this.deleteCategory(category._id)}>Delete</button>
+                            <button onClick={() => this.setState({ categoryId: category._id, category: category.name })}>Edit</button>
+                        </div>
+                    ))
+                    }
+                </div>
+            </Base>
         )
     }
 }

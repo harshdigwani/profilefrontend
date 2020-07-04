@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAllProjects, getProjectsOfUser } from '../../services/Project/Project'
+import Base from '../Base/Base';
 
 class Projects extends Component {
 
@@ -44,21 +45,22 @@ class Projects extends Component {
 
     render() {
         return (
-            <div>
-                {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
+            <Base>
+                <div>
+                    {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
 
-                {Object(this.state.projects).map(project =>
-                    (<div key={project._id}>
-                        <h1>{project.title}</h1>
-                        <p>{project.category.name}</p>
-                        <p>{project.createdBy.name}</p>
-                        <p>{project.description}</p>
-                        <p>{(new Date(project.createdAt)).toLocaleDateString()}</p>
-                        <div>{Array(project.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div>
-                        {/* {JSON.stringify(blog)} */}
-                    </div>))}
-            </div>)
-
+                    {Object(this.state.projects).map(project =>
+                        (<div key={project._id}>
+                            <h1>{project.title}</h1>
+                            <p>{project.category.name}</p>
+                            <p>{project.createdBy.name}</p>
+                            <p>{project.description}</p>
+                            <p>{(new Date(project.createdAt)).toLocaleDateString()}</p>
+                            <div>{Array(project.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div>
+                            {/* {JSON.stringify(blog)} */}
+                        </div>))}
+                </div>
+            </Base>)
     }
 }
 

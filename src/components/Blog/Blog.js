@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { isAutheticated } from '../../services/Auth/Auth';
 import { getBlogById } from '../../services/Blog/Blog';
-
+import Base from '../Base/Base';
 class Blog extends Component {
 
     constructor(props) {
@@ -37,10 +37,12 @@ class Blog extends Component {
 
     render() {
         return (
-            <div>
-                {JSON.stringify(this.state.blog)}
-                <button onClick={this.editBlog}>Edit</button>
-            </div>
+            <Base>
+                <div>
+                    {JSON.stringify(this.state.blog)}
+                    <button onClick={this.editBlog}>Edit</button>
+                </div>
+            </Base>
         )
     }
 }

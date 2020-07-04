@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { isAutheticated } from '../../services/Auth/Auth';
 import { getMyProfile, getProfileById } from '../../services/Profile/Profile';
-
+import Base from '../Base/Base';
 class Profile extends Component {
 
     constructor(props) {
@@ -57,10 +57,12 @@ class Profile extends Component {
 
     render() {
         return (
-            <div>
-                {JSON.stringify(this.state.profile)}
-                <button onClick={this.editProfile}>Edit</button>
-            </div>
+            <Base>
+                <div>
+                    {JSON.stringify(this.state.profile)}
+                    <button onClick={this.editProfile}>Edit</button>
+                </div>
+            </Base>
         )
     }
 }

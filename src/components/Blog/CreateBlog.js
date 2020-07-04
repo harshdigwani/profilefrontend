@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { isAutheticated } from '../../services/Auth/Auth';
 import { createBlog, updateBlog } from '../../services/Blog/Blog';
+import Base from '../Base/Base';
 
 class CreateBlog extends Component {
 
@@ -81,25 +82,27 @@ class CreateBlog extends Component {
 
     render() {
         return (
-            <div>
-                <h4>{this.state.user.firstname + " " + this.state.user.lastname}</h4>
-                <h4>{this.state.category}</h4>
-                <h4>Title</h4>
-                <input
-                    type="text"
-                    name="title"
-                    value={this.state.title}
-                    onChange={this.handleChange}
-                />
-                <h4>Content</h4>
-                <textarea
-                    name="content"
-                    value={this.state.content}
-                    onChange={this.handleChange}
-                />
-                {this.state.update ? <button onClick={this.updateBlog}>Update Blog</button>
-                    : <button onClick={this.createBlog}>Create Blog</button>}
-            </div>
+            <Base>
+                <div>
+                    <h4>{this.state.user.firstname + " " + this.state.user.lastname}</h4>
+                    <h4>{this.state.category}</h4>
+                    <h4>Title</h4>
+                    <input
+                        type="text"
+                        name="title"
+                        value={this.state.title}
+                        onChange={this.handleChange}
+                    />
+                    <h4>Content</h4>
+                    <textarea
+                        name="content"
+                        value={this.state.content}
+                        onChange={this.handleChange}
+                    />
+                    {this.state.update ? <button onClick={this.updateBlog}>Update Blog</button>
+                        : <button onClick={this.createBlog}>Create Blog</button>}
+                </div>
+            </Base>
         )
     }
 }

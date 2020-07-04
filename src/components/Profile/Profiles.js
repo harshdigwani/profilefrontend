@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAllProfiles } from '../../services/Profile/Profile';
+import Base from '../Base/Base';
 
 class Profiles extends Component {
 
@@ -32,17 +33,19 @@ class Profiles extends Component {
 
     render() {
         return (
-            <div>
-                {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
+            <Base>
+                <div>
+                    {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
 
-                {Object(this.state.profiles).map(profile =>
-                    <div key={profile._id}>
-                        <hr />
-                        <p >{JSON.stringify(profile)}</p>
-                        <hr />
-                    </div>)}
-            </div>)
-
+                    {Object(this.state.profiles).map(profile =>
+                        <div key={profile._id}>
+                            <hr />
+                            <p >{JSON.stringify(profile)}</p>
+                            <hr />
+                        </div>)}
+                </div>
+            </Base>
+        )
     }
 }
 

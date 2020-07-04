@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { isAutheticated } from '../../services/Auth/Auth';
 import { updateProfile } from '../../services/Profile/Profile';
-
+import Base from '../Base/Base';
 class UpdateProfile extends Component {
 
     constructor(props) {
@@ -54,24 +54,25 @@ class UpdateProfile extends Component {
         if (!this.state.update)
             return (<div>No Profile found</div>)
         return (
+            <Base>
+                <div>
+                    <h4>{this.state.user.firstname + " " + this.state.user.lastname}</h4>
+                    <h4>{this.state.category}</h4>
+                    <h4>Name</h4>
+                    <input
+                        type="text"
+                        name="profile.about.name"
+                        value={this.state.profile.about.name}
+                        onChange={this.handleChange}
+                    />
 
-            <div>
-                <h4>{this.state.user.firstname + " " + this.state.user.lastname}</h4>
-                <h4>{this.state.category}</h4>
-                <h4>Name</h4>
-                <input
-                    type="text"
-                    name="profile.about.name"
-                    value={this.state.profile.about.name}
-                    onChange={this.handleChange}
-                />
+                    <h5>{JSON.stringify(this.state.profile.about)}</h5>
 
-                <h5>{JSON.stringify(this.state.profile.about)}</h5>
+                    <button onClick={this.updateProfile}>Update Profile</button>
+                    <button onClick={this.getState}>Get state </button>
 
-                <button onClick={this.updateProfile}>Update Profile</button>
-                <button onClick={this.getState}>Get state </button>
-
-            </div>
+                </div>
+            </Base>
         )
     }
 }
