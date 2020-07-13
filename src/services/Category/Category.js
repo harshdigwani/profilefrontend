@@ -3,6 +3,10 @@ import { getToken } from '../Auth/Auth';
 
 // getting all Categories
 export const getAllCategories = async function () {
+
+    // if (typeof window != "undefined" && localStorage.getItem('categories'))
+    //     return JSON.parse(localStorage.getItem("categories"));
+
     let response = await fetch(`${API}/category/all`, {
 
         method: "GET",
@@ -13,6 +17,9 @@ export const getAllCategories = async function () {
     })
 
     response = await response.json();
+
+    // if (typeof window != "undefined")
+    //     localStorage.setItem("categories", response.data);
     return response;
 }
 

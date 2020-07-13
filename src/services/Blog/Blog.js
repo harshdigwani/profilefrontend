@@ -48,7 +48,6 @@ export const getBlogsOfUser = async function (userId) {
 }
 
 
-
 // Add blog or post blog
 export const createBlog = async function (blog) {
     let response = await fetch(`${API}/blogs`, {

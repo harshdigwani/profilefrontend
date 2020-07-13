@@ -3,6 +3,7 @@ import { validateForm } from '../../../utils/SigninFormValidation';
 import { signin } from '../../../services/Auth/Auth';
 import Base from '../../Base/Base';
 import Spinner from '../../Core/Spinner';
+import './Signin.css';
 
 class Signin extends Component {
 
@@ -21,10 +22,6 @@ class Signin extends Component {
     constructor(props) {
         super(props);
         this.state = this.getInitialState();
-    }
-
-    getState = () => {
-        console.log(this.state);
     }
 
     handleChange = (e) => {
@@ -71,34 +68,31 @@ class Signin extends Component {
         return (
             <Base>
                 {this.state.loading && <Spinner />}
-                < div id="main-registration-container" >
-                    <div id="signin">
-                        <h3>Login page</h3>
+                < div className="container col  justify-center align-center" >
+                    <h3 className="display-1">Welcome Back!</h3>
+                    {/* <h3>Login Here</h3> */}
+                    <form name="signinForm" className="flex-col login-form">
+                        <label>Email Id</label>
+                        <input type="text" name="email" value={this.state.email} required
+                            onChange={(e) => { this.handleChange(e); this.validateForm(); }}
+                            onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
+                        {
+                            (this.state.formSubmitted || this.state.touched.email) &&
+                            <div className="error-msg">{this.state.errors.email}</div>
+                        }
 
-                        <form name="signinForm">
-                            <label>Email Id</label>
-                            <input type="text" name="email" value={this.state.email} required
-                                onChange={(e) => { this.handleChange(e); this.validateForm(); }}
-                                onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
-                            {
-                                (this.state.formSubmitted || this.state.touched.email) &&
-                                <div className="errorMsg">{this.state.errors.email}</div>
-                            }
+                        <label>Password</label>
+                        <input type="password" name="password" value={this.state.password} required
+                            onChange={(e) => { this.handleChange(e); this.validateForm(); }}
+                            onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
+                        {
+                            (this.state.formSubmitted || this.state.touched.password) &&
+                            <div className="error-msg">{this.state.errors.password}</div>
+                        }
 
-                            <label>Password</label>
-                            <input type="password" name="password" value={this.state.password} required
-                                onChange={(e) => { this.handleChange(e); this.validateForm(); }}
-                                onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
-                            {
-                                (this.state.formSubmitted || this.state.touched.password) &&
-                                <div className="errorMsg">{this.state.errors.password}</div>
-                            }
-
-                            <input type="submit" onClick={this.submitForm} className="button" value="Log In" />
-                        </form>
-                        <button onClick={this.getState}> Get state</button>
-                    </div>
-                </div >
+                        <button onClick={this.submitForm} >Log In</button>
+                    </form>
+                </div>
             </Base>
         );
     }

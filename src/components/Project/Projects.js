@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getAllProjects, getProjectsOfUser } from '../../services/Project/Project'
+import { titleCase } from '../../utils/StingsFunction';
 import Base from '../Base/Base';
 
 class Projects extends Component {
@@ -43,22 +44,36 @@ class Projects extends Component {
         }
     }
 
+    openProject = (id) => this.props.history.push(`/project/${id}`);
+
+
     render() {
         return (
             <Base>
-                <div>
-                    {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
+                <div className="container col justify-center align-center flex-wrap space-arround">
+                    {/* <button onClick={(e) => { e.preventDefault(); this.getprojectsOfUser() }}>Get My Blogs</button> */}
 
-                    {Object(this.state.projects).map(project =>
-                        (<div key={project._id}>
-                            <h1>{project.title}</h1>
-                            <p>{project.category.name}</p>
-                            <p>{project.createdBy.name}</p>
-                            <p>{project.description}</p>
-                            <p>{(new Date(project.createdAt)).toLocaleDateString()}</p>
-                            <div>{Array(project.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div>
-                            {/* {JSON.stringify(blog)} */}
-                        </div>))}
+                    {Object(this.state.projects).map(project => (
+
+                        <div key={project._id} className="card-blog">
+                            <div className="container align-center">
+                                <span className="fa fa-user-circle fa-2x" /> &nbsp;&nbsp;&nbsp;
+                                <div className="container col justify-center">
+                                    <b>{titleCase(project.createdBy.name)}</b>
+                                    <span >{(new Date(project.createdAt)).toDateString()}</span>
+                                </div>
+                                <b className="badge right">{titleCase(project.category.name)}</b>
+                            </div>
+                            <h2>{titleCase(project.title)}</h2>
+                            <p>
+                                {Array(project.content).slice(0, 100)}...
+                                <span className="btn-more" onClick={() => this.openProject(project._id)}>read more</span>
+                            </p>
+
+                            {/* <div>{Array(project.link).map(l => <div key={Math.random()}> {l} &nbsp; &nbsp;&nbsp; </div>)}</div> */}
+                            {/* {JSON.stringify(project)} */}
+                        </div>
+                    ))}
                 </div>
             </Base>)
     }

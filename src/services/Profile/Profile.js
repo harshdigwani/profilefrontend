@@ -1,8 +1,9 @@
 import { API } from '../../Backend';
+import { getToken } from '../Auth/Auth';
 
 // getting all Profiles
-export const getAllProfiles = function () {
-    fetch(`${API}/profile/all`, {
+export const getAllProfiles = async function () {
+    let response = await fetch(`${API}/profile/all`, {
 
         method: "GET",
         headers: {
@@ -10,32 +11,29 @@ export const getAllProfiles = function () {
             "Content-Type": "application/json"
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 // get my profile
-export const getMyProfile = function () {
-    fetch(`${API}/profile/me`, {
+export const getMyProfile = async function () {
+    let response = await fetch(`${API}/profile/me`, {
 
         method: "GET",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 
 // Get Profile by id
-export const getProfileById = function (profileId) {
-    fetch(`${API}/profile/${profileId}`, {
+export const getProfileById = async function (profileId) {
+    let response = await fetch(`${API}/profile/${profileId}`, {
 
         method: "GET",
         headers: {
@@ -43,28 +41,25 @@ export const getProfileById = function (profileId) {
             "Content-Type": "application/json"
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 
 
 // Update My Profile
-export const updateProfile = function (profile) {
-    fetch(`${API}/profile/me`, {
+export const updateProfile = async function (profile) {
+    let response = await fetch(`${API}/profile/me`, {
 
         method: "PUT",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         },
         body: JSON.stringify(profile)
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 

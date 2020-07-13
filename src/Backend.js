@@ -1,2 +1,2 @@
 // export const API = process.env.REACT_APP_BACKEND_API
-export const API = "http://localhost:5000/api";
+export const API = "https://profileshare.herokuapp.com/api";

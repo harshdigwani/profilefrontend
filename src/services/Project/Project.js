@@ -1,8 +1,9 @@
 import { API } from '../../Backend';
+import { getToken } from '../Auth/Auth';
 
 // getting all projects
-export const getAllProjects = function () {
-    fetch(`${API}/projects/all`, {
+export const getAllProjects = async function () {
+    let response = await fetch(`${API}/projects/all`, {
 
         method: "GET",
         headers: {
@@ -10,15 +11,13 @@ export const getAllProjects = function () {
             "Content-Type": "application/json"
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 // Get Project by id
-export const getProjectById = function (projectId) {
-    fetch(`${API}/projects/${projectId}`, {
+export const getProjectById = async function (projectId) {
+    let response = await fetch(`${API}/projects/${projectId}`, {
 
         method: "GET",
         headers: {
@@ -26,16 +25,14 @@ export const getProjectById = function (projectId) {
             "Content-Type": "application/json"
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 
 // Get projects of a user
-export const getprojectsOfUser = function (userId) {
-    fetch(`${API}/projects/user/${userId}`, {
+export const getProjectsOfUser = async function (userId) {
+    let response = await fetch(`${API}/projects/user/${userId}`, {
 
         method: "GET",
         headers: {
@@ -43,63 +40,56 @@ export const getprojectsOfUser = function (userId) {
             "Content-Type": "application/json"
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 
-
 // Add project
-export const addProject = function (project) {
-    fetch(`${API}/projects`, {
+export const createProject = async function (project) {
+    let response = await fetch(`${API}/projects`, {
 
         method: "POST",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         },
         body: JSON.stringify(project)
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 
 // Update project
-export const updateProject = function (projectId, project) {
-    fetch(`${API}/projects/${projectId}`, {
+export const updateProject = async function (projectId, project) {
+    let response = await fetch(`${API}/projects/${projectId}`, {
 
         method: "PUT",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         },
         body: JSON.stringify(project)
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }
 
 
-
 // delete Project
-export const deleteProject = function (projectId) {
-    fetch(`${API}/projects/${projectId}`, {
+export const deleteProject = async function (projectId) {
+    let response = await fetch(`${API}/projects/${projectId}`, {
 
         method: "DELETE",
         headers: {
             Accept: "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "x-auth-token": getToken()
         }
     })
-        .then(response => {
-            return response.json();
-        })
-        .catch(err => console.error(err));
+    response = await response.json();
+    return response;
 }

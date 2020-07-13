@@ -38,7 +38,7 @@ export const signin = async function (user) {
 
 
 // Authenticating user after logging in. 
-export const authenticate = function (data) {
+const authenticate = function (data) {
     if (typeof window !== "undefined") localStorage.setItem("user", JSON.stringify(data));
 };
 

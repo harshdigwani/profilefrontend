@@ -42,10 +42,6 @@ class Signup extends Component {
         }
     }
 
-    getState = () => {
-        console.log(this.state);
-    }
-
     validateForm = () => {
         let { firstname, lastname, email, password, cpassword } = this.state;
         const { errors, isFormValid } = validateForm({
@@ -87,63 +83,59 @@ class Signup extends Component {
 
         return (
             <Base>
-                <div id="main-registration-container">
-                    <div id="register">
-                        <h3>Registration page</h3>
+                <div className="container col  justify-center align-center">
+                    <h3 className="display-1">Signup to get Started!</h3>
+                    <form className="flex-col login-form" name="signupForm">
 
-                        <form name="signupForm">
-
-                            <label>First Name</label>
-                            <input type="text" name="firstname" value={firstname}
-                                onChange={(e) => { this.handleChange(e); this.validateForm(); }}
-                                onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
-                            {
-                                (this.state.formSubmitted || this.state.touched.firstname) &&
-                                <div className="errorMsg">{this.state.errors.firstname}</div>
-                            }
+                        <label>First Name</label>
+                        <input type="text" name="firstname" value={firstname}
+                            onChange={(e) => { this.handleChange(e); this.validateForm(); }}
+                            onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
+                        {
+                            (this.state.formSubmitted || this.state.touched.firstname) &&
+                            <div className="error-msg">{this.state.errors.firstname}</div>
+                        }
 
 
-                            <label>Last Name</label>
-                            <input type="text" name="lastname" value={lastname}
-                                onChange={(e) => { this.handleChange(e); this.validateForm(); }}
-                                onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
-                            {
-                                (this.state.formSubmitted || this.state.touched.lastname) &&
-                                <div className="errorMsg">{this.state.errors.lastname}</div>
-                            }
+                        <label>Last Name</label>
+                        <input type="text" name="lastname" value={lastname}
+                            onChange={(e) => { this.handleChange(e); this.validateForm(); }}
+                            onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
+                        {
+                            (this.state.formSubmitted || this.state.touched.lastname) &&
+                            <div className="error-msg">{this.state.errors.lastname}</div>
+                        }
 
-                            <label>Email Id</label>
-                            <input type="text" name="email" value={email}
-                                onChange={(e) => { this.handleChange(e); this.validateForm(); }}
-                                onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
-                            {
-                                (this.state.formSubmitted || this.state.touched.email) &&
-                                <div className="errorMsg">{this.state.errors.email}</div>
-                            }
+                        <label>Email Id</label>
+                        <input type="text" name="email" value={email}
+                            onChange={(e) => { this.handleChange(e); this.validateForm(); }}
+                            onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
+                        {
+                            (this.state.formSubmitted || this.state.touched.email) &&
+                            <div className="error-msg">{this.state.errors.email}</div>
+                        }
 
-                            <label>Password</label>
-                            <input type="password" name="password" value={password}
-                                onChange={(e) => { this.handleChange(e); this.validateForm(); }}
-                                onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
-                            {
-                                (this.state.formSubmitted || this.state.touched.password) &&
-                                <div className="errorMsg">{this.state.errors.password}</div>
-                            }
+                        <label>Password</label>
+                        <input type="password" name="password" value={password}
+                            onChange={(e) => { this.handleChange(e); this.validateForm(); }}
+                            onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
+                        {
+                            (this.state.formSubmitted || this.state.touched.password) &&
+                            <div className="error-msg">{this.state.errors.password}</div>
+                        }
 
 
-                            <label>Confirm Password</label>
-                            <input type="password" name="cpassword" value={cpassword}
-                                onChange={(e) => { this.handleChange(e); this.validateForm(); }}
-                                onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
-                            {
-                                (this.state.formSubmitted || this.state.touched.cpassword) &&
-                                <div className="errorMsg">{this.state.errors.cpassword}</div>
-                            }
+                        <label>Confirm Password</label>
+                        <input type="password" name="cpassword" value={cpassword}
+                            onChange={(e) => { this.handleChange(e); this.validateForm(); }}
+                            onBlur={(e) => { this.handleTouch(e); this.validateForm(); }} />
+                        {
+                            (this.state.formSubmitted || this.state.touched.cpassword) &&
+                            <div className="error-msg">{this.state.errors.cpassword}</div>
+                        }
 
-                            <input type="submit" onClick={this.submitForm} className="button" value="Sign Up" />
-                        </form>
-                        <button onClick={this.getState}> Get state</button>
-                    </div>
+                        <button onClick={this.submitForm}>Sign Up</button> 
+                    </form>
                 </div>
             </Base>);
     }

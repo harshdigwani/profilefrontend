@@ -35,6 +35,8 @@ class Header extends Component {
 
                     {!isAutheticated() && <span><NavLink className="nav-link" activeClassName="active-nav-link" to="/signin">Login</NavLink></span>}
 
+                    {!isAutheticated() && <span><NavLink className="nav-link" activeClassName="active-nav-link" to="/signup">Signup</NavLink></span>}
+
                     {isAutheticated() && <span className="nav-link header-signout"
                         onClick={() => {
                             if (!window.confirm("Do you want to logout")) return;
