@@ -74,7 +74,8 @@ class Blogs extends Component {
                         </div>
                     ))}
                 </div>
-            </Base>)
+            </Base>
+        )
     }
 }
 

@@ -2,15 +2,24 @@
     display: flex;
     align-items: center;
     min-height: 10vh;
-    background-color: #000000c4;
+    background-color: #ffffff62;
     z-index: 100;
     padding: 0 5% 0 5%;
+}
+
+header {
+    margin: 0;
+    left: 0px;
+    right: 0px;
+    position: sticky;
+    /* border-bottom: 1px solid #c9c5c5 ; */
+    box-shadow: 2px 2px 5px #c9c5c5;
 }
 
 .logo {
     height: 2rem;
     width: 2rem;
-    border: 3px solid white;
+    border: 3px solid rgb(56, 56, 56);
 }
 
 .brand {
@@ -20,13 +29,13 @@
     font-size: 1.25rem;
     padding: .5rem;
     font-weight: 600;
-    color: white;
+    color: rgb(41, 41, 41);
 }
 
 .nav-menu {
     background-color: inherit;
     border: 0px;
-    color: white;
+    color: rgb(56, 56, 56);
     margin-left: auto;
     display: none;
 }
@@ -34,7 +43,7 @@
 .nav-link {
     text-decoration: none;
     display: block;
-    color: #fff;
+    color: rgb(0, 0, 0);
     font-size: 1rem;
     padding: .7rem;
 }
@@ -48,7 +57,7 @@
     background-color: #ffffff;
 }
 
-.header-signout{
+.header-signout {
     cursor: pointer;
 }
 
@@ -63,14 +72,14 @@
         display: inline-block;
     }
 
-    .nav-link{
+    .nav-link {
         /* display: none; */
     }
 
     .hidden {
         display: none
     }
-    
+
 
     .brand {
         /* flex: 0; */
