@@ -14,6 +14,8 @@ import Project from './components/Project/Project';
 import Profiles from './components/Profile/Profiles';
 import Profile from './components/Profile/Profile';
 import UpdateProfile from './components/Profile/UpdateProfile';
+import AdminRoute from './components/Routes/AdminRoute';
+import PrivateRoute from './components/Routes/PrivateRoute';
 
 const history = createBrowserHistory();
 
@@ -26,18 +28,18 @@ function Routes() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
 
-        <Route exact path="/categories" component={Categories} />
+        <AdminRoute exact path="/categories" component={Categories} />
 
         <Route exact path="/blogs" component={Blogs} />
-        <Route exact path="/createblog" component={CreateBlog} />
+        <PrivateRoute exact path="/createblog" component={CreateBlog} />
         <Route exact path="/blog/:id" component={Blog} />
 
         <Route exact path="/projects" component={Projects} />
-        <Route exact path="/createproject" component={CreateProject} />
+        <PrivateRoute exact path="/createproject" component={CreateProject} />
         <Route exact path="/project/:id" component={Project} />
 
         <Route exact path="/profiles" component={Profiles} />
-        <Route exact path="/updateProfile" component={UpdateProfile} />
+        <PrivateRoute exact path="/updateProfile" component={UpdateProfile} />
         <Route exact path="/profile/:id" component={Profile} />
       </Switch>
     </Router>

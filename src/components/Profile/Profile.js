@@ -70,7 +70,7 @@ class Profile extends Component {
                     <div className="width-60">
                         <div className="container align-center">
                             <h1 className="heading-1 inline">{titleCase(profile.about.name)}</h1>
-                            {/* {user._id === profile._id && <b className="badge right" onClick={this.editprofile}><span className="fa fa-pencil" /> Edit</b>} */}
+                            {user._id === profile._id && <b className="badge right" onClick={this.editprofile}><span className="fa fa-pencil" /> Edit</b>}
                         </div>
                         <div className="container align-center">
                             <span className="fa fa-user-circle fa-2x" /> &nbsp;&nbsp;&nbsp;
@@ -78,7 +78,7 @@ class Profile extends Component {
                                 <b>{profile.about.email}</b>
                                 <span className="font-size-date">{(new Date(profile.createdAt)).toDateString()}</span>
                             </div>
-                            <b className="badge right">{titleCase(profile.about.name)}</b>
+                            <b className="badge right">{profile.about.username}</b>
                         </div>
 
 

@@ -27,11 +27,11 @@ class Header extends Component {
 
                     <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/">Home</NavLink></span >
 
-                    <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/blogs">Blogs</NavLink></span>
+                    <span><NavLink className="nav-link" activeClassName="active-nav-link" to="/blogs">Blogs</NavLink></span>
 
-                    <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/projects">Projects</NavLink></span >
+                    <span><NavLink className="nav-link" activeClassName="active-nav-link" to="/projects">Projects</NavLink></span >
 
-                    <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/profiles">Profiles</NavLink></span >
+                    <span><NavLink className="nav-link" activeClassName="active-nav-link" to="/profiles">Profiles</NavLink></span >
 
                     {!isAutheticated() && <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/signin">Login</NavLink></span>}
 
