@@ -6,7 +6,6 @@ function App() {
   return (
     <Base>
       <div>
-        <h1></h1>
       </div>
     </Base>);
 }
