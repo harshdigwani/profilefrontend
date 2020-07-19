@@ -8,7 +8,7 @@ const Base = ({ children }) => {
         <Fragment>
             <Header />
             {children}
-            {/* <Footer /> */}
+            <Footer />
         </Fragment>
     )
 }
