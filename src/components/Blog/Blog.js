@@ -37,8 +37,9 @@ class Blog extends Component {
     }
 
     render() {
-        let { blog, user } = this.state;
-        if (!blog) return (<h1></h1>)
+        let { blog, user, loading } = this.state;
+        if (!blog)
+            return (<Base>{<Spinner/>}</Base>)
 
         return (
             

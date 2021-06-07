@@ -40,7 +40,8 @@ class Project extends Component {
 
     render() {
         let { project, user } = this.state;
-        if (!project) return (<h1></h1>)
+        if (!project) return (<Base>{<Spinner/>}</Base>)
+
 
         return (
             <Base>
