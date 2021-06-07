@@ -16,6 +16,7 @@ import Profile from './components/Profile/Profile';
 import UpdateProfile from './components/Profile/UpdateProfile';
 import AdminRoute from './components/Routes/AdminRoute';
 import PrivateRoute from './components/Routes/PrivateRoute';
+import Home from './components/Home/Home';
 
 const history = createBrowserHistory();
 
@@ -24,6 +25,8 @@ function Routes() {
     <Router history={history}>
       <Switch>
         <Route exact path="/" component={App} />
+
+        <Route exact path="/" component={Home} />
 
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
