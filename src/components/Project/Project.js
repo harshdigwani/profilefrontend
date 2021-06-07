@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { isAutheticated } from '../../services/Auth/Auth';
 import { getProjectById } from '../../services/Project/Project';
 import Base from '../Base/Base';
+import Spinner from '../Core/Spinner';
 import { titleCase } from '../../utils/StingsFunction';
 
 class Project extends Component {
@@ -39,10 +40,11 @@ class Project extends Component {
 
     render() {
         let { project, user } = this.state;
-        if (!project) return (<h1>No project found...</h1>)
+        if (!project) return (<h1></h1>)
 
         return (
             <Base>
+                {this.state.loading && <Spinner />}
                 <div className="container justify-center align-center ">
                     <div className="width-60">
                         <div className="container align-center">

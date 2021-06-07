@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { isAutheticated } from '../../services/Auth/Auth';
 import { getBlogById } from '../../services/Blog/Blog';
 import Base from '../Base/Base';
+import Spinner from '../Core/Spinner'
 import { titleCase } from '../../utils/StingsFunction';
 class Blog extends Component {
 
@@ -37,10 +38,12 @@ class Blog extends Component {
 
     render() {
         let { blog, user } = this.state;
-        if (!blog) return (<h1>No blog found...</h1>)
+        if (!blog) return (<h1></h1>)
 
         return (
+            
             <Base>
+                {this.state.loading && <Spinner />}
                 <div className="container justify-center align-center ">
                     <div className="width-60">
                         <div className="container align-center">

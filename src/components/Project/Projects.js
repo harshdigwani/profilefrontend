@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { getAllProjects, getProjectsOfUser } from '../../services/Project/Project'
 import { titleCase } from '../../utils/StingsFunction';
 import Base from '../Base/Base';
+import Spinner from '../Core/Spinner'
 
 class Projects extends Component {
 
@@ -52,6 +53,7 @@ class Projects extends Component {
             <Base>
                 <div className="container col justify-center align-center flex-wrap space-arround">
                     {/* <button onClick={(e) => { e.preventDefault(); this.getprojectsOfUser() }}>Get My Blogs</button> */}
+                    {this.state.loading && <Spinner />}
 
                     {Object(this.state.projects).map(project => (
 

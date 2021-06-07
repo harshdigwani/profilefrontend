@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getAllProfiles } from '../../services/Profile/Profile';
 import Base from '../Base/Base';
+import Spinner from '../Core/Spinner'
 import { titleCase } from '../../utils/StingsFunction';
 
 class Profiles extends Component {
@@ -38,6 +39,7 @@ class Profiles extends Component {
             <Base>
                 <div className="container col justify-center align-center flex-wrap space-arround">
                     {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
+                    {this.state.loading && <Spinner />}
 
                     {Object(this.state.profiles).map(profile => (
 

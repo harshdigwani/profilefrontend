@@ -24,7 +24,7 @@ function Routes() {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/app" component={App} />
 
         <Route exact path="/" component={Home} />
 

@@ -7,19 +7,24 @@ const Home = () => {
         <Base>
             <div>
                 <div className="home-container">
-                    <img className="img-1" src='../../../../images/versionControl.svg' alt="git" />
+                    <img className="img-1" src='../../../../images/undraw_swipe_profiles.svg' alt="git" />
                     <div className="top-section">
-                        <h1>Get More Insights with Gitplus</h1>
+                        <h1>Welcome to Profile share!</h1>
                         <ul>
-                            <li><span className="fa fa-check font-green fa-lg" /> Post your Blogs and let users Learn from it...</li>
+                            {/* <li><span className="fa fa-check font-green fa-lg" /> Post your Blogs and let users Learn from it...</li>
                             <li><span className="fa fa-check font-green fa-lg" /> Make your cool projects public...</li>
                             <li><span className="fa fa-check font-green fa-lg" /> Connect With like mided People...</li>
-                            <li><span className="fa fa-check font-green fa-lg" /> New look for User Profile</li>
+                            <li><span className="fa fa-check font-green fa-lg" /> New look for User Profile</li> */}
+
+                            <li><span className="" /> Post your Blogs and let users Learn from it...</li>
+                            <li><span className="" /> Make your cool projects public...</li>
+                            <li><span className="" /> Connect With like mided People...</li>
+                            <li><span className="" /> New look for User Profile</li>
                         </ul>
                     </div>
                 </div>
                 <div className="home-container">
-                    <h2>TechStack Used</h2>
+                    <h2>Share and grow...</h2>
                     <div className="tech-stack">
                         <div className="tech"> <img src='../../../../images/undraw_about_me_wa29.svg' alt="react.js" />
                             <h5>Profiles</h5>

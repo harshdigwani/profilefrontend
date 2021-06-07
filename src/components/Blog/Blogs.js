@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { getAllBlogs, getBlogsOfUser } from '../../services/Blog/Blog'
 import Base from '../Base/Base';
+import Spinner from "../Core/Spinner";
 import { titleCase } from '../../utils/StingsFunction';
 import './Blog.css'
 
@@ -51,7 +52,7 @@ class Blogs extends Component {
             <Base>
                 <div className="container col justify-center align-center flex-wrap space-arround">
                     {/* <button onClick={(e) => { e.preventDefault(); this.getBlogsOfUser() }}>Get My Blogs</button> */}
-
+                    {this.state.loading && <Spinner />}
                     {Object(this.state.blogs).map(blog => (
 
                         <div key={blog._id} className="card-blog">
