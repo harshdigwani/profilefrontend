@@ -3,6 +3,7 @@ import { validateForm } from '../../../utils/SignupFormValidation';
 import './Signup.css';
 import { signup } from '../../../services/Auth/Auth';
 import Base from '../../Base/Base';
+import Spinner from '../../Core/Spinner';
 
 class Signup extends Component {
 
@@ -69,6 +70,7 @@ class Signup extends Component {
             try {
                 const { firstname, lastname, email, password } = this.state;
                 const user = await signup({ firstname, lastname, email, password });
+                alert(user.message);
                 console.log(user);
             }
             catch (err) {
@@ -83,7 +85,8 @@ class Signup extends Component {
 
         return (
             <Base>
-                <div className="container col  justify-center align-center">
+                {this.state.loading && <Spinner />}
+                {<div className="container col  justify-center align-center">
                     <h3 className="display-1">Signup to get Started!</h3>
                     <form className="flex-col login-form" name="signupForm">
 
@@ -136,7 +139,7 @@ class Signup extends Component {
 
                         <button onClick={this.submitForm}>Sign Up</button> 
                     </form>
-                </div>
+                </div>}
             </Base>);
     }
 }

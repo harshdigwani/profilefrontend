@@ -60,6 +60,8 @@ class Signin extends Component {
             this.setState(this.getInitialState());
             const { email, password } = this.state;
             const user = await signin({ email, password });
+            this.setState({ loading: false })
+            alert(user.message);
             console.log(user);
         }
     }
