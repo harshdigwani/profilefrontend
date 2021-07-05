@@ -37,13 +37,18 @@ class Header extends Component {
 
                     {!isAutheticated() && <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/signup">Signup</NavLink></span>}
 
+                    {isAutheticated() && <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/createProject">Create Project</NavLink></span >}
+
+                    {isAutheticated() && <span><NavLink exact className="nav-link" activeClassName="active-nav-link" to="/createBlog">Create Blog</NavLink></span >}
+
                     {isAutheticated() && <span className="nav-link header-signout"
                         onClick={() => {
                             if (!window.confirm("Do you want to logout")) return;
                             window.location.reload();
                             signout();
                         }} >Logout</span>}
-                </span>
+
+                 </span>
             </header >
         )
     }
